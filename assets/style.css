@@ -16,6 +16,7 @@ body,
 
 .stApp{
     background:#F4F7FC;
+    color:#111827;
 }
 
 /* ==========================================
@@ -27,11 +28,8 @@ body,
     max-width:1380px;
 
     padding-top:2rem;
-
     padding-bottom:2rem;
-
     padding-left:3rem;
-
     padding-right:3rem;
 }
 
@@ -61,6 +59,47 @@ h4{
 }
 
 /* ==========================================
+   BODY TEXT
+========================================== */
+
+p,
+li,
+span,
+small,
+strong,
+em,
+td,
+th{
+    color:#111827;
+}
+
+div[data-testid="stMarkdownContainer"],
+div[data-testid="stMarkdownContainer"] *,
+div[data-testid="stText"],
+div[data-testid="stCaptionContainer"]{
+    color:#111827;
+}
+
+/* ==========================================
+   LABELS
+========================================== */
+
+label{
+    color:#111827;
+    font-weight:600;
+}
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+input,
+textarea,
+select{
+    color:#111827;
+}
+
+/* ==========================================
    SIDEBAR
 ========================================== */
 
@@ -77,16 +116,14 @@ section[data-testid="stSidebar"]{
 
 section[data-testid="stSidebar"] *{
 
-    color:white !important;
+    color:#FFFFFF !important;
 
 }
 
 section[data-testid="stSidebar"] a{
 
     border-radius:12px;
-
     padding:12px;
-
     transition:.25s;
 }
 
@@ -108,7 +145,7 @@ section[data-testid="stSidebar"] hr{
 
 div[data-testid="metric-container"]{
 
-    background:white;
+    background:#FFFFFF;
 
     padding:20px;
 
@@ -131,6 +168,16 @@ div[data-testid="metric-container"]:hover{
 
 }
 
+/* Metric text */
+
+div[data-testid="metric-container"] label{
+    color:#64748B !important;
+}
+
+div[data-testid="metric-container"] div{
+    color:#0F172A !important;
+}
+
 /* ==========================================
    BUTTONS
 ========================================== */
@@ -151,7 +198,7 @@ div[data-testid="metric-container"]:hover{
         #1D4ED8
     );
 
-    color:white;
+    color:#FFFFFF;
 
     font-weight:700;
 
@@ -166,6 +213,20 @@ div[data-testid="metric-container"]:hover{
 
     box-shadow:
     0 12px 24px rgba(37,99,235,.35);
+
+}
+
+/* ==========================================
+   TEXT INPUTS
+========================================== */
+
+.stTextInput input,
+.stNumberInput input,
+.stSelectbox,
+.stDateInput,
+.stTextArea textarea{
+
+    border-radius:12px;
 
 }
 
@@ -190,7 +251,7 @@ div[data-testid="stDataFrame"]{
 
 div[data-testid="stImage"]{
 
-    background:white;
+    background:#FFFFFF;
 
     padding:14px;
 
@@ -212,7 +273,7 @@ div[data-testid="stImage"]{
 }
 
 /* ==========================================
-   CODE
+   CODE BLOCKS
 ========================================== */
 
 pre{
@@ -238,7 +299,27 @@ hr{
 }
 
 /* ==========================================
-   HIDE STREAMLIT
+   EXPANDERS
+========================================== */
+
+.streamlit-expanderHeader{
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   TABS
+========================================== */
+
+button[data-baseweb="tab"]{
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   HIDE STREAMLIT DEFAULT ELEMENTS
 ========================================== */
 
 #MainMenu{

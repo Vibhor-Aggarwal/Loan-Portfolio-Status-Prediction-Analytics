@@ -595,32 +595,44 @@ st.write("")
 # FOOTER
 # ==========================================================
 
-st.markdown("---")
-
 st.markdown("""
-<div style="
-background:#0F172A;
-padding:30px;
-border-radius:20px;
-text-align:center;
-color:white;
-">
+<style>
 
-<h2 style="color:white;">
-🏦 Loan Portfolio Status Prediction & Analytics
-</h2>
+.project-footer{
+    background:#0F172A;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+}
 
-<p style="font-size:17px;color:#CBD5E1;">
+.project-footer-title{
+    color:#FFFFFF !important;
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:12px;
+}
 
+.project-footer-text{
+    color:#E2E8F0 !important;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+</style>
+
+<div class="project-footer">
+
+<div class="project-footer-title">
+Loan Portfolio Status Prediction
+</div>
+
+<div class="project-footer-text">
 End-to-End Machine Learning Project
+</div>
 
-</p>
-
-<p style="color:#94A3B8;">
-
-Developed using Python • Scikit-Learn • Streamlit • Random Forest
-
-</p>
+<div class="project-footer-text">
+Built using Python, Pandas, Scikit-learn, Random Forest and Streamlit
+</div>
 
 </div>
 """, unsafe_allow_html=True)
