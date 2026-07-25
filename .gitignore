@@ -10,7 +10,12 @@ data/raw/
 data/processed/
 
 # Trained models
-models/
+models/*
+!models/best_random_forest.pkl
+!models/onehot_encoder.pkl
+!models/scaler.pkl
+!models/feature_columns.pkl
+!models/numerical_columns.pkl
 
 # Streamlit cache
 .streamlit/
