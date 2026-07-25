@@ -1,65 +1,83 @@
-# Loan Portfolio Status Prediction & Analytics
+# Loan Portfolio Status Prediction and Analytics
+
+An end-to-end Machine Learning project that predicts whether a loan is likely to be **Fully Paid** or **Charged Off** using historical Lending Club loan data.
+
+The project covers the complete machine learning lifecycle, including data understanding, data cleaning, exploratory data analysis, feature engineering, preprocessing, model development, hyperparameter tuning, model evaluation, feature importance analysis, and deployment using Streamlit.
+
+---
 
 ## Project Overview
 
-Loan Portfolio Status Prediction & Analytics is an end-to-end Machine Learning and Data Analytics project that predicts whether a loan is likely to be **Fully Paid** or **Charged Off** using historical Lending Club loan data.
+Financial institutions process thousands of loan applications every day. Approving loans for applicants who are likely to default can lead to significant financial losses.
 
-The project follows an industry-style data science workflow, including data understanding, data cleaning, exploratory data analysis (EDA), preprocessing, feature engineering, model comparison, hyperparameter tuning, threshold optimization, and feature importance analysis.
+This project develops a machine learning solution capable of predicting loan repayment status based on applicant information and historical lending records.
 
-Beyond predictive modeling, the project is designed to demonstrate the complete analytics lifecycle by incorporating SQL-based business analysis, interactive Power BI dashboards, and a Streamlit web application.
-
-The objective is not only to build an accurate prediction model but also to generate actionable business insights that can support better lending decisions and portfolio risk management.
+The application also provides an interactive Streamlit dashboard for exploring the dataset, understanding model performance, viewing feature importance, and making predictions on new loan applications.
 
 ---
 
-# Business Problem
+## Business Problem
 
-Financial institutions process thousands of loan applications every day. Approving high-risk borrowers can lead to significant financial losses, while rejecting reliable borrowers can reduce business opportunities.
+Banks and lending institutions need reliable methods to identify high-risk loan applicants before approving loans.
 
-This project aims to:
+Accurate loan default prediction helps organizations:
 
-* Predict whether a loan will be Fully Paid or Charged Off.
-* Identify the key factors influencing loan repayment.
-* Analyze customer and loan characteristics.
-* Support data-driven lending decisions.
-* Demonstrate an end-to-end machine learning workflow suitable for industry applications.
+- Reduce financial losses
+- Improve lending decisions
+- Minimize bad debt
+- Improve portfolio quality
+- Support risk assessment teams
+
+Instead of relying only on manual evaluation, this project uses machine learning to assist in identifying risky applicants.
 
 ---
 
-# Dataset Information
+## Features
+
+- End-to-End Machine Learning Pipeline
+- Data Cleaning
+- Exploratory Data Analysis
+- Feature Engineering
+- Data Preprocessing
+- Model Comparison
+- Hyperparameter Tuning
+- Feature Importance Analysis
+- Interactive Loan Prediction
+- Streamlit Web Application
+
+---
+
+## Dataset
 
 **Dataset:** Lending Club Loan Dataset
 
-**Target Variable**
+**Prediction Type:** Binary Classification
 
-* `loan_status`
+Target Variable:
 
-Classes:
-
-* Fully Paid (Healthy Loan)
-* Charged Off (Risky Loan)
-
-Dataset Size:
-
-* **396,030 records**
-
-Training Set:
-
-* **316,824 rows**
-
-Testing Set:
-
-* **79,206 rows**
-
-Processed Features:
-
-* **48 features**
+| Loan Status | Meaning |
+|-------------|----------|
+| Fully Paid | Low Risk |
+| Charged Off | High Risk |
 
 ---
 
-# Project Workflow
+## Technology Stack
 
-```text
+| Category | Tools |
+|----------|------|
+| Language | Python |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Machine Learning | Scikit-learn |
+| Model Persistence | Joblib |
+| Deployment | Streamlit |
+
+---
+
+## Machine Learning Workflow
+
+```
 Raw Dataset
       │
       ▼
@@ -72,13 +90,16 @@ Data Cleaning
 Exploratory Data Analysis
       │
       ▼
+Feature Engineering
+      │
+      ▼
 Preprocessing
       │
       ▼
 Train-Test Split
       │
       ▼
-Feature Encoding
+Model Training
       │
       ▼
 Model Comparison
@@ -87,22 +108,28 @@ Model Comparison
 Hyperparameter Tuning
       │
       ▼
-Threshold Optimization
+Feature Importance
       │
       ▼
-Feature Importance Analysis
+Prediction
       │
       ▼
-Final Model
+Streamlit Deployment
 ```
 
 ---
 
-# Project Structure
+## Project Structure
 
-```text
+```
 Loan-Portfolio-Status-Prediction-Analytics/
 
+│
+├── app.py
+├── README.md
+├── requirements.txt
+│
+├── assets/
 │
 ├── data/
 │   ├── raw/
@@ -112,250 +139,180 @@ Loan-Portfolio-Status-Prediction-Analytics/
 │
 ├── models/
 │
+├── outputs/
+│
+├── pages/
+│   ├── Dataset_and_EDA.py
+│   ├── Prediction.py
+│   ├── Model_performance.py
+│   ├── Feature_importance.py
+│   └── About.py
+│
 ├── reports/
 │
-├── src/
-│
-├── README.md
-│
-└── requirements.txt
+└── src/
+    ├── data_understanding.py
+    ├── data_cleaning.py
+    ├── data_quality.py
+    ├── eda.py
+    ├── preprocessing.py
+    ├── model_comparison.py
+    ├── hyperparametertuning.py
+    ├── feature_importance.py
+    └── predictor.py
 ```
 
 ---
 
-# Tech Stack
+## Data Preprocessing
 
-## Programming
+The preprocessing pipeline performs:
 
-* Python
+- Target Variable Creation
+- Feature Engineering
+- Train-Test Split
+- Ordinal Encoding
+- One-Hot Encoding
+- Feature Scaling
+- Saving preprocessing artifacts for deployment
 
-## Data Analysis
+Artifacts saved:
 
-* Pandas
-* NumPy
+- OneHotEncoder
+- StandardScaler
+- Feature Columns
 
-## Data Visualization
-
-* Matplotlib
-* Seaborn
-
-## Machine Learning
-
-* Scikit-learn
-* Imbalanced-learn (SMOTE)
-* Random Forest Classifier
-* RandomizedSearchCV
-
-## Version Control
-
-* Git
-* GitHub
-
-## Business Intelligence *(Planned)*
-
-* SQL
-* Power BI
-
-## Deployment *(Planned)*
-
-* Streamlit
+These artifacts ensure the prediction pipeline processes new user inputs exactly as the training data.
 
 ---
 
-# Exploratory Data Analysis (EDA)
+## Machine Learning Models
 
-The dataset was explored to better understand borrower characteristics and loan behavior.
+The following classification algorithms were trained and evaluated:
 
-EDA included:
+- Logistic Regression
+- Decision Tree
+- Gradient Boosting
+- Random Forest
 
-* Missing value analysis
-* Duplicate detection
-* Distribution analysis
-* Correlation analysis
-* Loan status visualization
-* Loan grade analysis
-* Interest rate analysis
-* Income distribution
-* Home ownership analysis
-* Loan purpose analysis
-* Numerical feature distributions
-* Categorical feature analysis
+Each model was evaluated using:
 
-Several visualizations were generated and saved in the **images/** directory.
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC Score
 
 ---
 
-# Data Preprocessing
-
-The preprocessing pipeline included:
-
-* Handling missing values
-* Removing unnecessary columns
-* Encoding categorical variables
-* Feature scaling where required
-* Train-test splitting
-* Saving processed datasets
-
-Generated files:
-
-```text
-data/processed/
-
-x_train.csv
-x_test.csv
-y_train.csv
-y_test.csv
-```
-
----
-
-# Machine Learning Models
-
-Multiple classification models were trained and compared.
-
-The project evaluates different algorithms before selecting the best-performing model.
-
-Performance comparison is saved in:
-
-```text
-reports/model_comparison.csv
-```
-
----
-
-# Hyperparameter Tuning
+## Hyperparameter Tuning
 
 The final Random Forest model was optimized using:
 
-* RandomizedSearchCV
-* Cross Validation
-* SMOTE
-* F1 Score optimization
+- RandomizedSearchCV
+- Cross Validation
+- SMOTE for class balancing
+- Threshold Optimization
 
-Search configuration:
-
-* n_iter = 5
-* cv = 3
-
-The best model is saved as:
-
-```text
-models/best_random_forest.pkl
-```
-
-Hyperparameter results are saved in:
-
-```text
-reports/hyperparameter_results.csv
-```
+The tuned model demonstrated the best overall balance between precision and recall.
 
 ---
 
-# Threshold Optimization
+## Feature Importance
 
-Instead of relying only on the default prediction threshold (0.50), the model evaluates multiple probability thresholds:
+Feature importance analysis identified the most influential variables affecting loan repayment prediction.
 
-* 0.50
-* 0.40
-* 0.30
-* 0.20
-* 0.10
+Examples include:
 
-For each threshold, the following metrics are calculated:
+- Interest Rate
+- Grade
+- Sub Grade
+- Debt-to-Income Ratio
+- Annual Income
+- Loan Amount
+- Revolving Utilization
+- Employment Length
+- Mortgage Accounts
+- Total Accounts
 
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* ROC-AUC
-
-The threshold with the highest F1 Score is selected for the final evaluation.
-
----
-
-# Feature Importance Analysis
-
-The trained Random Forest model was analyzed to identify the most influential features affecting loan predictions.
-
-Top contributing features include:
-
-* Grade
-* Interest Rate
-* Sub Grade
-* Debt Consolidation Purpose
-* Loan Term
-* Home Ownership
-* Verification Status
-* Debt-to-Income Ratio
-
-Outputs generated:
-
-```text
-reports/feature_importance.csv
-
-images/feature_importance.png
-```
-
-These insights improve model interpretability and help explain prediction behavior to business stakeholders.
+These insights improve model interpretability and support business decision-making.
 
 ---
 
-# Results
+## Streamlit Application
 
-The project successfully demonstrates:
+The web application includes the following pages:
 
-* End-to-end machine learning workflow
-* Data cleaning and preprocessing
-* Exploratory data analysis
-* Model comparison
-* Hyperparameter tuning
-* Threshold optimization
-* Feature importance analysis
-* Professional project organization
-* Business-oriented interpretation of results
+### Home
+
+Project overview and workflow.
+
+### Dataset & EDA
+
+Dataset information and exploratory visualizations.
+
+### Prediction
+
+Interactive loan status prediction using the trained Random Forest model.
+
+### Model Performance
+
+Comparison of machine learning algorithms and evaluation metrics.
+
+### Feature Importance
+
+Visualization of the most influential features.
+
+### About
+
+Project summary, technologies, limitations, and future improvements.
 
 ---
 
-# Future Improvements
+## Screenshots
 
-The following enhancements are planned:
+### Home
 
-* SQL business analysis
-* Power BI dashboard
-* Streamlit web application
-* Model deployment
-* SHAP-based explainability
-* Additional machine learning models
-* Automated prediction interface
+![Home](assets/home.png)
 
 ---
 
-# Installation
+### Dataset & EDA
+
+![EDA](assets/dataset_eda.png)
+
+---
+
+### Prediction
+
+![Prediction](assets/prediction.png)
+
+---
+
+### Model Performance
+
+![Performance](assets/model_performance.png)
+
+---
+
+### Feature Importance
+
+![Feature Importance](assets/feature_importance.png)
+
+---
+
+## Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/<Vibhor-Aggarwal>>/Loan-Portfolio-Status-Prediction-Analytics.git
+git clone https://github.com/Vibhor-Aggarwal/Loan-Portfolio-Status-Prediction-Analytics.git
 ```
 
-Navigate to the project directory:
+Move into the project directory:
 
 ```bash
 cd Loan-Portfolio-Status-Prediction-Analytics
-```
-
-Create a virtual environment:
-
-```bash
-python -m venv .venv
-```
-
-Activate the virtual environment:
-
-**Windows**
-
-```bash
-.venv\Scripts\activate
 ```
 
 Install dependencies:
@@ -364,66 +321,39 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
----
-
-# Running the Project
-
-Run individual modules from the project root:
+Run the application:
 
 ```bash
-python src/data_understanding.py
-```
-
-```bash
-python src/data_cleaning.py
-```
-
-```bash
-python src/eda.py
-```
-
-```bash
-python src/preprocessing.py
-```
-
-```bash
-python src/model_comparison.py
-```
-
-```bash
-python src/hyperparametertuning.py
-```
-
-```bash
-python src/feature_importance.py
+streamlit run app.py
 ```
 
 ---
 
-# Repository Highlights
+## Future Improvements
 
-* Professional folder structure
-* Modular Python scripts
-* Well-documented functions
-* Reproducible workflow
-* Business-focused machine learning pipeline
-* Git version control
-* Interview-ready portfolio project
+Possible enhancements include:
+
+- XGBoost implementation
+- LightGBM implementation
+- SHAP Explainability
+- Probability-based Risk Scoring
+- Cloud Deployment
+- Model Monitoring
+- REST API using FastAPI
+- Docker Containerization
 
 ---
 
-# Author
+## Author
 
 **Vibhor Aggarwal**
 
-Computer Science Engineering (FinTech)
+GitHub
 
-Python | Data Analytics | Machine Learning
-
-GitHub: https://github.com/<Vibhor-Aggarwal>
+https://github.com/Vibhor-Aggarwal
 
 ---
 
-# License
+## License
 
-This project is intended for educational, learning, and portfolio purposes.
+This project is licensed under the MIT License.

@@ -1,4 +1,6 @@
 import pandas as pd
+import joblib
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -199,7 +201,7 @@ def encode_nominal_features(
     x_test: pd.DataFrame
 ):
     """
-    One Hot Encode nominal features.
+    One Hot Encode nominal features and save encoder.
     """
 
     encoder = OneHotEncoder(
@@ -209,6 +211,13 @@ def encode_nominal_features(
 
     encoder.fit(
         x_train[NOMINAL_COLUMNS]
+    )
+
+    os.makedirs("models", exist_ok=True)
+
+    joblib.dump(
+        encoder,
+        "models/onehot_encoder.pkl"
     )
 
     train_encoded = encoder.transform(
@@ -249,8 +258,6 @@ def encode_nominal_features(
     )
 
     print("Nominal features encoded successfully.")
-    print(f"Training Shape: {x_train.shape}")
-    print(f"Testing Shape: {x_test.shape}")
 
     return x_train, x_test
 
@@ -279,13 +286,18 @@ def scale_numerical_features(
     numerical_columns: list
 ):
     """
-    Scale numerical features.
+    Scale numerical features and save scaler.
     """
 
     scaler = StandardScaler()
 
     scaler.fit(
         x_train[numerical_columns]
+    )
+
+    joblib.dump(
+        scaler,
+        "models/scaler.pkl"
     )
 
     x_train_scaled = pd.DataFrame(
@@ -308,20 +320,33 @@ def scale_numerical_features(
     x_test[numerical_columns] = x_test_scaled
 
     print("Numerical features scaled successfully.")
-    print(f"Scaled {len(numerical_columns)} columns.")
 
     return x_train, x_test
+
 
 def save_processed_data(
     x_train: pd.DataFrame,
     x_test: pd.DataFrame,
     y_train: pd.Series,
     y_test: pd.Series,
+    numerical_columns: list,
     output_dir: str
 ):
     """
-    Save processed datasets.
+    Save processed datasets and preprocessing artifacts.
     """
+
+    os.makedirs("models", exist_ok=True)
+
+    joblib.dump(
+        x_train.columns.tolist(),
+        "models/feature_columns.pkl"
+    )
+
+    joblib.dump(
+        numerical_columns,
+        "models/numerical_columns.pkl"
+    )
 
     x_train.to_csv(
         f"{output_dir}/x_train.csv",
@@ -344,8 +369,6 @@ def save_processed_data(
     )
 
     print("Processed datasets saved successfully.")
-
-
 def main():
 
     # Load cleaned dataset
@@ -405,6 +428,7 @@ def main():
         x_test,
         y_train,
         y_test,
+        numerical_columns,
         OUTPUT_DIR
     )
 
